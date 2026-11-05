@@ -108,3 +108,14 @@ Escolha visual restrita a caminhão menor (3 eixos) ou maior (4 eixos), com a me
 O usuário informou valor de referência de R$ 1.900 para Mogi das Cruzes → São Bernardo do Campo, 12 t de resíduo perigoso, caminhão de 3 eixos. A simulação anterior era R$ 2.404,63, com adicional por peso de R$ 990. O parâmetro de peso do resíduo perigoso foi reduzido de R$ 90 para R$ 45 por tonelada acima de 1 t. A mesma simulação passa a R$ 1.909,63 (diferença de R$ 9,63 em relação à referência). Óleo residual e os demais parâmetros não foram alterados.
 
 Este ajuste afeta todas as simulações de resíduo perigoso com mais de 1 t. É uma calibração provisória com um exemplo comercial, não uma validação de toda a tabela nem uma correção dos pedágios. Comparar outras rotas, pesos e veículos com cotações reais antes da homologação. Não foi aplicado um desconto oculto nem um valor fixo à rota.
+
+
+## Deploy na Vercel
+
+Importe o repositório com **Root Directory na raiz** (não `frontend`). O `vercel.json` define instalação com `npm run setup`, build com `npm run build` e saída estática `frontend/dist`. O setup instala as dependências de frontend e backend com `--include=dev`, incluindo o compilador TypeScript. Não é necessário instalar `tsc` globalmente.
+
+Os arquivos `api/contact.js` e `api/freight/calculate.js` reutilizam a aplicação Express compilada como funções da Vercel, sem `app.listen()`. O código compilado é produzido pelo build; não precisa ser versionado.
+
+No painel, use as configurações do repositório (remova overrides divergentes de instalação/build/saída). Defina `FRONTEND_URL` com a origem HTTPS real do site, sem barra final, e configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM` e `MAIL_TO=contato@lisitrans.com.br`. `ROUTE_API_KEY` continua opcional. Deixe `VITE_API_URL` vazio para usar as funções `/api` do mesmo deploy. Para múltiplas instâncias, limitação e deduplicação em memória não são compartilhadas; produção em escala exige armazenamento comum.
+
+Após o deploy, teste a simulação e um envio identificado como teste. A compilação local não comprova entrega SMTP nem aprovação do deploy na plataforma.
