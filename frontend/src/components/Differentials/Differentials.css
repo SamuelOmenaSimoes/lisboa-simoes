@@ -1,0 +1,190 @@
+.differentials {
+  padding: var(--section-py) 0;
+  background: var(--ink-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.differentials__bg-strip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(26, 48, 128, 0.06) 100%);
+  pointer-events: none;
+}
+
+.differentials__header {
+  max-width: 500px;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.differentials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.diff-card {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  background: var(--graphite);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.25s, transform 0.25s var(--ease), box-shadow 0.25s;
+}
+
+.diff-card:hover {
+  border-color: rgba(232, 83, 26, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+
+.diff-card__number {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(232, 83, 26, 0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  transition: color 0.25s;
+}
+
+.diff-card:hover .diff-card__number {
+  color: rgba(232, 83, 26, 0.5);
+}
+
+.diff-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.diff-card__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.diff-card__desc {
+  font-size: 14px;
+  color: var(--mist);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* CTA Banner */
+.differentials__cta-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  border: 1px solid rgba(26, 48, 128, 0.6);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 4vw, 48px);
+  position: relative;
+  overflow: hidden;
+}
+
+.differentials__cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232,83,26,0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.differentials__cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.differentials__cta-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.differentials__cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 1024px) {
+  .differentials__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .differentials__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .diff-card {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .diff-card__title {
+    font-size: 15px;
+  }
+
+  .diff-card__desc {
+    font-size: 13px;
+  }
+
+  .differentials__cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px 20px;
+  }
+
+  .differentials__cta-content {
+    width: 100%;
+  }
+
+  .differentials__cta-title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .differentials__cta-banner .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 18px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .differentials__cta-title {
+    font-size: 18px;
+  }
+
+  .differentials__cta-label {
+    font-size: 10px;
+  }
+
+  .differentials__cta-banner .btn-primary {
+    font-size: 12px !important;
+  }
+}

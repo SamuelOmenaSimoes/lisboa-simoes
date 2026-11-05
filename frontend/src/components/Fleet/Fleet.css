@@ -1,0 +1,124 @@
+.fleet {
+  padding: var(--section-py) 0;
+  background: var(--ink-soft);
+}
+
+.fleet__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* Photo strip */
+.fleet__photo-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 8px;
+  margin-bottom: 40px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 340px;
+}
+
+.fleet__photo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fleet__photo {
+  overflow: hidden;
+  flex: 1;
+}
+
+.fleet__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(0.6);
+  transition: transform 0.5s var(--ease), filter 0.5s;
+}
+
+.fleet__photo:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.9) saturate(0.8);
+}
+
+/* Table */
+.fleet__table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.fleet__table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 2fr;
+  gap: 20px;
+  padding: 14px 24px;
+  background: var(--graphite-mid);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+.fleet__table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 2fr;
+  gap: 20px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--border);
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.fleet__table-row:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.fleet__table-type {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.fleet__table-cap {
+  font-size: 14px;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.fleet__table-count {
+  font-size: 13px;
+  color: var(--silver);
+}
+
+.fleet__table-use {
+  font-size: 13px;
+  color: var(--mist);
+}
+
+.fleet__disclaimer {
+  font-size: 13px;
+  color: var(--steel);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .fleet__header { grid-template-columns: 1fr; }
+  .fleet__photo-strip { grid-template-columns: 1fr; height: auto; }
+  .fleet__photo-col { display: none; }
+  .fleet__photo--wide { height: 240px; }
+  .fleet__table-header,
+  .fleet__table-row { grid-template-columns: 1fr 1fr; }
+  .fleet__table-use { display: none; }
+  .fleet__table-count { display: none; }
+}
