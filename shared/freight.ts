@@ -17,6 +17,12 @@ export const FREIGHT_CONFIG = {
       multiplier: 2.8,
       weightRatePerTon: 45.00,    // Referência inicial calibrada pela cotação Mogi → SBC, 12 t, 3 eixos.
     },
+    // Parâmetros iniciais iguais aos de resíduo perigoso; homologar com o comercial.
+    'corrosivo': {
+      label: 'Resíduo Corrosivo',
+      multiplier: 2.8,
+      weightRatePerTon: 45.00,
+    },
     'oleo-residual': {
       label: 'Óleo Residual',
       multiplier: 2.2,
@@ -27,6 +33,7 @@ export const FREIGHT_CONFIG = {
   // Taxa adicional por km para resíduos perigosos (seguro/rastreamento/documentação)
   hazmatFeePerKm: {
     'perigoso': 1.20,
+    'corrosivo': 1.20,
     'oleo-residual': 0.85,
   } as Record<string, number>,
 }
