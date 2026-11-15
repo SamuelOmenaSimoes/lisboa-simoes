@@ -60,3 +60,13 @@ test('referência Mogi–São Bernardo: 12 t e 3 eixos se aproxima da cotação 
  assert.equal(result.totalEstimate,1909.63)
  assert.ok(Math.abs(result.totalEstimate-1900)<20)
 })
+
+test('API aceita resíduo corrosivo e aplica os parâmetros iniciais de resíduo perigoso',async()=>{
+ const payload={...req,cargoType:'corrosivo',weight:12,axles:3}
+ const response=await fetch(base+'/api/freight/calculate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+ assert.equal(response.status,200)
+ const result=await response.json()
+ assert.deepEqual(result,calculateFreight({...payload,cargoType:'perigoso'}))
+ assert.ok(result.weightSurcharge>0)
+ assert.ok(result.hazmatFee>0)
+})
